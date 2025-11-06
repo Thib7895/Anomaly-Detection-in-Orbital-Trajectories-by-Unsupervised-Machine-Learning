@@ -1,0 +1,25 @@
+Le jeu de données est composé de 4 fichiers CSV, chacun représentant un archétype orbital différent pour tester la robustesse de notre approche :
+
+ISS(ZARYA)_25544_data.csv (4540 lignes)
+
+Objet : Station Spatiale Internationale (ISS)
+Type : LEO Actif (Orbite Basse)
+Comportement : Décroissance orbitale due au frottement, ponctuée de "reboosts" (anomalies franches).
+
+ASTRA 2F_38778_data.csv (1677 lignes)
+
+Objet : ASTRA 2F
+Type : GEO Actif (Orbite Géostationnaire)
+Comportement : Très stable, avec de fines manœuvres de "maintien à poste" (anomalies subtiles).
+
+ARIANE 5 DEB (SYLDA)_44336_data.csv (1768 lignes)
+
+Objet : Débris Ariane 5
+Type : HEO Débris (Orbite Haute Excentrique)
+Comportement : Orbite complexe avec une dérive cyclique due aux perturbations gravitationnelles.
+
+SL-8 DEB_4084_data.csv (1383 lignes)
+
+Objet : Débris SL-8
+Type : LEO Débris (Orbite Basse)
+Comportement : "Témoin" pur. Décroissance orbitale lente et constante, sans manœuvres.
