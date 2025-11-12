@@ -1,6 +1,6 @@
-# 🛰️ Feature Engineering — Space-Track Satellite Data
+# Feature Engineering — Space-Track Satellite Data
 
-## 1. 🧩 Features Statiques (catalogue général `active_satellites.csv`)
+## 1. Features Statiques (catalogue général `active_satellites.csv`)
 
 Ces variables décrivent la **configuration orbitale instantanée** d’un satellite.  
 Elles sont principalement utilisées pour le **profiling global** et la **détection d’anomalies statiques**.
@@ -27,7 +27,7 @@ Elles sont principalement utilisées pour le **profiling global** et la **détec
 
 ---
 
-## 2. 🔁 Features Dynamiques (série temporelle `STARLINK-3874_52365_data.csv`)
+## 2. Features Dynamiques (série temporelle `STARLINK-3874_52365_data.csv`)
 
 Ces variables exploitent les **variations temporelles** des paramètres orbitaux.  
 Elles sont utilisées pour la **détection d’anomalies évolutives** (par exemple : perte d’altitude, manœuvre, dérive, etc.).
@@ -47,13 +47,13 @@ Elles sont utilisées pour la **détection d’anomalies évolutives** (par exem
 | **Agrégats temporels** | `mean_altitude_weekly` | Moyenne glissante de l’altitude | Indique la tendance générale |
 | | `trend_altitude` | Pente linéaire sur n observations | Chute lente → alerte précoce |
 
-> 🎯 **Objectif :** alimenter un modèle d’apprentissage pour la détection d’anomalies temporelles (IsolationForest, Autoencoder, LSTM...).
+> **Objectif :** alimenter un modèle d’apprentissage pour la détection d’anomalies temporelles (IsolationForest, Autoencoder, LSTM...).
 
 ---
 
-## 3. 🧮 Formules Utiles
+## 3. Formules Utiles
 
-### 📘 Altitude estimée (en km)
+### Altitude estimée (en km)
 \[
 Altitude = \left( \frac{398600.4418}{(2\pi \cdot MEAN\_MOTION / 86400)^2} \right)^{1/3} - 6371
 \]
@@ -62,7 +62,7 @@ Altitude = \left( \frac{398600.4418}{(2\pi \cdot MEAN\_MOTION / 86400)^2} \right
 
 ---
 
-### 🛰️ Classification orbitale (selon altitude moyenne)
+### Classification orbitale (selon altitude moyenne)
 | Type d’orbite | Altitude moyenne | Exemples |
 |----------------|------------------|-----------|
 | **LEO** (Low Earth Orbit) | < 2 000 km | Starlink, ISS |
@@ -71,7 +71,7 @@ Altitude = \left( \frac{398600.4418}{(2\pi \cdot MEAN\_MOTION / 86400)^2} \right
 
 ---
 
-### ⚙️ Indicateurs dérivés
+### Indicateurs dérivés
 - **Drag Index** = `BSTAR × ECCENTRICITY`  
   → Mesure l’influence combinée du frottement atmosphérique et de l’excentricité.  
 - **Orbital Energy Index** = `1 / (2 × MEAN_MOTION²)`  
@@ -81,7 +81,7 @@ Altitude = \left( \frac{398600.4418}{(2\pi \cdot MEAN\_MOTION / 86400)^2} \right
 
 ---
 
-## 4. 🎯 Sélection Finale des Features Candidates
+## 4. Sélection Finale des Features Candidates
 
 | Type | Variables clés | Utilisation |
 |-------|----------------|-------------|
@@ -90,7 +90,6 @@ Altitude = \left( \frac{398600.4418}{(2\pi \cdot MEAN\_MOTION / 86400)^2} \right
 | **Meta / Classification** | `OBJECT_TYPE`, `orbit_class`, `DECAYED`, `CLASSIFICATION_TYPE` | Pour filtrer, labelliser ou segmenter les objets |
 
 ---
-
-📘 **Résumé :**
+**Résumé :**
 Ce jeu de *features* fournit une représentation complète de l’état orbital et de son évolution dans le temps.  
 Les variables statiques assurent la cohérence physique, tandis que les variables dynamiques mesurent la stabilité et les dérives orbitale — éléments essentiels pour construire un modèle d’anomaly detection fiable.
