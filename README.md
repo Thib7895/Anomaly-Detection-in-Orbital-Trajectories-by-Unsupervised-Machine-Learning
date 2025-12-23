@@ -18,12 +18,9 @@ This project implements an unsupervised machine learning framework for detecting
 - [Background](#background)
 - [Dataset](#dataset)
 - [Methodology](#methodology)
-- [Installation](#installation)
 - [Project Structure](#project-structure)
 - [Results](#results)
 - [Usage](#usage)
-- [Future Work](#future-work)
-- [References](#references)
 - [Authors](#authors)
 
 ---
@@ -91,11 +88,11 @@ Physics-based rules identify anomalies based on orbital mechanics principles:
 
 | Rule | Threshold | Physical Meaning |
 |------|-----------|------------------|
-| Altitude Jump | > 0.15 km/h | Significant semi-major axis change |
-| Mean Motion Change | > 0.00005 rev/day/h | Orbital period modification |
-| Energy Change | > 0.005 km²/s²/h | Propulsive maneuver indicator |
-| High Drag | > Mean + 3σ | Unusual atmospheric drag |
-| Apogee/Perigee Jump | > 1.5 km | Orbital shape modification |
+| Altitude Jump | > 0.3 km/h | Significant semi-major axis change |
+| Mean Motion Change | > 0.0001 rev/day/h | Orbital period modification |
+| Energy Change | > 0.01 km²/s²/h | Propulsive maneuver indicator |
+| High Drag | > Mean + 3.5σ | Unusual atmospheric drag |
+| Apogee/Perigee Jump | > 2 km | Orbital shape modification |
 | Reboost | Both apogee & perigee increase | Altitude-raising maneuver |
 
 ### 3. Anomaly Detection Algorithms
@@ -128,24 +125,6 @@ Five unsupervised algorithms were evaluated:
 │     (2024)      │     │    Predict      │     │   & Reporting   │
 └─────────────────┘     └─────────────────┘     └─────────────────┘
 ```
-
----
-
-## Installation
-
-### Requirements
-
-```bash
-Python >= 3.9
-numpy >= 1.21.0
-pandas >= 1.3.0
-scikit-learn >= 1.0.0
-matplotlib >= 3.4.0
-seaborn >= 0.11.0
-scipy >= 1.7.0
-jupyter >= 1.0.0
-```
-
 ## Project Structure
 
 ```
@@ -210,12 +189,12 @@ To adjust ground truth sensitivity, modify the thresholds in the `create_ground_
 
 ```python
 thresholds = {
-    'semimajor_rate': 0.15,      # km/h - decrease for more sensitivity
-    'mean_motion_rate': 0.00005, # rev/day/h
-    'energy_rate': 0.005,        # km²/s²/h
-    'bstar_sigma': 3.0,          # standard deviations
-    'apogee_jump': 1.5,          # km
-    'perigee_jump': 1.5,         # km
+    'semimajor_rate': 0.3,      # km/h - decrease for more sensitivity
+    'mean_motion_rate': 0.0001, # rev/day/h
+    'energy_rate': 0.01,        # km²/s²/h
+    'bstar_sigma': 3.5,          # standard deviations
+    'apogee_jump': 2,          # km
+    'perigee_jump': 2,         # km
 }
 ```
 
