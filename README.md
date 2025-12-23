@@ -134,9 +134,8 @@ Five unsupervised algorithms were evaluated:
 │   ├── ARIANE 5 DEB (SYLDA)_44336_data.csv
 │   └── SL-8 DEB_4084_data.csv
 │
-├── assets/
-│   └── dashboard_preview.png
-│
+├── anomaly_detection_dashboard.png
+├── temporal_vizualisation.png
 ├── Analyse ISS.ipynb          # Main analysis notebook
 ├── README.md
 ```
